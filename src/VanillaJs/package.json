@@ -1,0 +1,8 @@
+{
+  "name": "vanillajs",
+  "version": "1.0.0",
+  "description": "A starter for webpack integrated in .NET core",
+  "main": "index.js",
+  "author": "Luc Claesen",
+  "license": "ISC"
+}
