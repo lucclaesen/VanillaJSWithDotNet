@@ -1,8 +1,11 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+  ViewData["Title"] = "Index";
 }
-
 <h2>Index</h2>
 
-Hello there y'all
+<div id="my-app"></div>
+
+@section scripts {
+  <script src="~/dist/main.js" asp-append-version="true"></script>
+}

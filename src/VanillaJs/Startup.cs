@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.SpaServices.Webpack;
 
 namespace VanillaJs
 {
@@ -32,6 +33,10 @@ namespace VanillaJs
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();
+        app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+        {
+          HotModuleReplacement = true
+        });
       }
       else
       {

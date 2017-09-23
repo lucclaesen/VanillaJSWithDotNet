@@ -2,7 +2,24 @@
   "name": "vanillajs",
   "version": "1.0.0",
   "description": "A starter for webpack integrated in .NET core",
-  "main": "index.js",
   "author": "Luc Claesen",
-  "license": "ISC"
+  "private": true,
+  "devDependencies": {
+    "@types/jquery": "3.2.12",
+    "@types/webpack-env": "1.13.0",
+    "aspnet-webpack": "^2.0.1",
+    "awesome-typescript-loader": "3.2.1",
+    "bootstrap": "3.3.7",
+    "css-loader": "0.28.4",
+    "extract-text-webpack-plugin": "2.1.2",
+    "file-loader": "0.11.2",
+    "isomorphic-fetch": "2.2.1",
+    "jquery": "3.2.1",
+    "json-loader": "0.5.4",
+    "style-loader": "0.18.2",
+    "typescript": "2.4.1",
+    "url-loader": "0.5.9",
+    "webpack": "2.5.1",
+    "webpack-hot-middleware": "2.18.2"
+  }
 }
