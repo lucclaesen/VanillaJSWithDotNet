@@ -3,7 +3,6 @@ import Person from "./Person";
 import Greeter from "./Greeter";
 
 $(_ => {
-
   // just make sure that we're in business ....
   console.log("Hello jquery");
 
@@ -13,10 +12,14 @@ $(_ => {
   button.click((ev) => {
     var p = new Person("Luc", "Claesen", "Belgium");
     var greeter = new Greeter(p);
-
     app.append(`<p>${greeter.greetTarget()}</p>`);
   });
 
   app.append(button);
 
 });
+
+
+if (module.hot) {
+  module.hot.accept();
+}

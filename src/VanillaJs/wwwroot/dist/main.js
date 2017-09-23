@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9ec7d252ebd7637a310b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "06414009b154046c60c6"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -911,8 +911,8 @@ module.exports = Html5Entities;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Person__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Greeter__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Person__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Greeter__ = __webpack_require__(5);
  // this is the syntax for "ambient modules"
 
 
@@ -929,6 +929,9 @@ __WEBPACK_IMPORTED_MODULE_0_jquery__(function (_) {
     });
     app.append(button);
 });
+if (true) {
+    module.hot.accept();
+}
 
 
 /***/ }),
@@ -1194,42 +1197,6 @@ if (module) {
 
 /***/ }),
 /* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var Greeter = (function () {
-    function Greeter(target) {
-        this.target = target;
-    }
-    Greeter.prototype.greetTarget = function () {
-        return "Hello " + this.target.getName() + " from " + this.target.Nationality;
-    };
-    return Greeter;
-}());
-/* harmony default export */ __webpack_exports__["a"] = (Greeter);
-//# sourceMappingURL=Greeter.js.map
-
-/***/ }),
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var Person = (function () {
-    function Person(firstName, lastName, nationality) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.Nationality = nationality;
-    }
-    Person.prototype.getName = function () {
-        return this.firstName + " " + this.lastName;
-    };
-    return Person;
-}());
-/* harmony default export */ __webpack_exports__["a"] = (Person);
-//# sourceMappingURL=Person.js.map
-
-/***/ }),
-/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1412,7 +1379,7 @@ ansiHTML.reset()
 
 
 /***/ }),
-/* 6 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1420,6 +1387,42 @@ ansiHTML.reset()
 module.exports = function () {
 	return /[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-PRZcf-nqry=><]/g;
 };
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var Greeter = (function () {
+    function Greeter(target) {
+        this.target = target;
+    }
+    Greeter.prototype.greetTarget = function () {
+        return "Hello " + this.target.Nationality + " from " + this.target.Nationality;
+    };
+    return Greeter;
+}());
+/* harmony default export */ __webpack_exports__["a"] = (Greeter);
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var Person = (function () {
+    function Person(firstName, lastName, nationality) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.Nationality = nationality;
+    }
+    Person.prototype.getName = function () {
+        return this.firstName + " " + this.lastName;
+    };
+    return Person;
+}());
+/* harmony default export */ __webpack_exports__["a"] = (Person);
 
 
 /***/ }),
@@ -12208,7 +12211,7 @@ exports.encode = exports.stringify = __webpack_require__(12);
 
 "use strict";
 
-var ansiRegex = __webpack_require__(6)();
+var ansiRegex = __webpack_require__(4)();
 
 module.exports = function (str) {
 	return typeof str === 'string' ? str.replace(ansiRegex, '') : str;
@@ -12245,7 +12248,7 @@ for (var key in styles) {
   clientOverlay.style[key] = styles[key];
 }
 
-var ansiHTML = __webpack_require__(5);
+var ansiHTML = __webpack_require__(3);
 var colors = {
   reset: ['transparent', 'transparent'],
   black: '181818',

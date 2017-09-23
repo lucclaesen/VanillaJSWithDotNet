@@ -6,11 +6,15 @@
     "noImplicitAny": false,
     "noEmitOnError": true,
     "removeComments": false,
+    "skipDefaultLibCheck": true,
     "sourceMap": true,
     "target": "es5",
-    "lib": ["es2015", "es2015.iterable", "es2015.promise", "dom"]
+    "strict": true,
+    "types": [ "webpack-env" ],
+    "lib": [ "es2015", "es2015.iterable", "es2015.promise", "dom" ]
   },
   "exclude": [
+    "bin",
     "node_modules"
   ]
 }

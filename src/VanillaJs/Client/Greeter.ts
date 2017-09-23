@@ -9,6 +9,6 @@ export default class Greeter {
   }
 
   greetTarget() {
-    return `Hi therrrrrre ${this.target.getName()} from ${this.target.Nationality}`;
+    return `Hello ${this.target.Nationality} from ${this.target.Nationality}`;
   }
 }
