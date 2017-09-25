@@ -35,7 +35,9 @@ namespace VanillaJs
         app.UseDeveloperExceptionPage();
         app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
         {
-          HotModuleReplacement = true
+          HotModuleReplacement = true,
+          // ProjectPath = "http://localhost:59417/",
+          
         });
       }
       else

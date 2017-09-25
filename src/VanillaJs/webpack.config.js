@@ -3,17 +3,33 @@ const webpack = require("webpack");
 const CheckerPlugin = require("awesome-typescript-loader").CheckerPlugin;
 const bundleOutputDir = './wwwroot/dist';
 
+/**
+ * Personal remarks.
+ * 
+ * One important deviation from the default template is the publicPath configuration,
+ * which instructs the webpack dev server to look for packages for HRM.
+ * As originally set to "dist/" (a relative path), when serving the application from
+ * a virtual dir (e.g. http://localhost:1234/Home instead of http://localhost:1324), the
+ * HMR client will look for package updates in http://localhost:1234/Home/dist/__webpack_hrm.
+ * 
+ * This is very problematic when using webpack in conjunction with mvc and non-default
+ * controllers.
+ * 
+ * We therefore use an absolute path "/dist/" as publicPathValue.
+ */
 
 module.exports = env => {
   const isDevBuild = !(env && env.prod);
   return [{
     stats: { modules: false },
-    entry: { 'main': './Client/main.ts' },
+    entry: { 
+      'ex01': './Client/ex01.ts'
+     },
     resolve: { extensions: ['.js', '.ts'] },
     output: {
       path: path.join(__dirname, bundleOutputDir),
       filename: '[name].js',
-      publicPath: 'dist/'
+      publicPath: '/dist/' 
     },
     module: {
       rules: [
