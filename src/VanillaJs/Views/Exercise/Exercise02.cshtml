@@ -1,0 +1,33 @@
+@{
+  ViewData["Title"] = "Exercise01";
+}
+<h2>Exercise02: Todo</h2>
+
+<p>This is a simple todo list application, using nothing but jquery.</p>
+
+<div id="my-app">
+    
+    <section>
+        <h3>Create a todo</h3>
+        <form id="createForm">
+            <span>
+                <input type="text" value="Some input"></input>
+                <button type="submit">Create</button>
+            </span>
+        </form>
+    </section>
+
+    <section>
+        <h3>Open todo's</h3>
+        <ul id="openTodos"></ul>
+    </section>
+
+    <section>
+        <h3>Completed todo's</h3>
+        <ul id="completedTodos"></ul>
+    </section>
+</div>
+
+@section scripts {
+  <script src="~/dist/ex02.js" asp-append-version="true"></script>
+}

@@ -23,7 +23,8 @@ module.exports = env => {
   return [{
     stats: { modules: false },
     entry: { 
-      'ex01': './Client/ex01.ts'
+      'ex01': './Client/ex01.ts',
+      'ex02': './Client/ex02.ts'
      },
     resolve: { extensions: ['.js', '.ts'] },
     output: {

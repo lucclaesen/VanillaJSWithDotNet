@@ -9,5 +9,10 @@ namespace VanillaJs.Controllers {
         {
             return View();
         }
+
+        public IActionResult Exercise02()
+        {
+            return View();
+        }
     }
 }
