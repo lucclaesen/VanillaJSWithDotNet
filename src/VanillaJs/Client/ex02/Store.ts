@@ -1,5 +1,6 @@
 import Todo from "./Todo";
-import {TodoEventType, TodoEvent} from "./TodoEvent"
+import { Event } from "./Event"
+import TodoEventType from "./TodoEventType";
 
 /**
  * Represents a store (list) of todo's. On the one hand, the store allows to add and delete
@@ -11,9 +12,9 @@ export default class Store {
     // public, since we want others to access todoAdded.Subscribe
     // ... but imperfect, since we want only the event creator to 
     // be able to call todoAdded.Fire
-    public TodoAdded: TodoEvent = new TodoEvent(TodoEventType.Added);
-    public TodoDeleted: TodoEvent = new TodoEvent(TodoEventType.Deleted);
-    public TodoCompleted: TodoEvent = new TodoEvent(TodoEventType.Completed);
+    public TodoAdded: Event<Todo, TodoEventType> = new Event(TodoEventType.Added);
+    public TodoDeleted: Event<Todo, TodoEventType> = new Event(TodoEventType.Deleted);
+    public TodoCompleted: Event<Todo, TodoEventType> = new Event(TodoEventType.Completed);
 
     constructor(private todos: Array<Todo> = new Array<Todo>()) {
         this.handleEventsFromTodo = this.handleEventsFromTodo.bind(this);

@@ -1,4 +1,5 @@
-import { IHandleTodoEvent, TodoEventType } from "./TodoEvent";
+import { IHandleEvent } from "./Event";
+import TodoEventType from "./TodoEventType";
 
 /**
  * Represents a todo task.
@@ -6,7 +7,7 @@ import { IHandleTodoEvent, TodoEventType } from "./TodoEvent";
 export default class Todo {
     
     private id: number;
-    private todoEventHandler: IHandleTodoEvent;
+    private todoEventHandler: IHandleEvent<Todo, TodoEventType>;
     
     /**
      * Initializes a new todo instance.
@@ -17,7 +18,7 @@ export default class Todo {
      */
     constructor(
         id: number, 
-        todoEventHandler : IHandleTodoEvent,
+        todoEventHandler : IHandleEvent<Todo, TodoEventType>,
         public task: string, 
         public done: boolean = false) 
     {

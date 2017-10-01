@@ -1,7 +1,8 @@
 import * as $ from "jquery";
 import Todo from "./Todo";
 import Store from "./Store";
-import { IHandleTodoEvent, TodoEventType } from "./TodoEvent";
+import { IHandleEvent } from "./Event";
+import TodoEventType from "./TodoEventType";
 import TodoViewModel from "./TodoViewModel";
 
 /**
