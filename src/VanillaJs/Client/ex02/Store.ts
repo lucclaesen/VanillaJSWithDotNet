@@ -11,6 +11,7 @@ export default class Store {
     // be able to call todoAdded.Fire
     public TodoAdded: TodoEvent = new TodoEvent(TodoEventType.Added);
     public TodoDeleted: TodoEvent = new TodoEvent(TodoEventType.Deleted);
+    public TodoCompleted: TodoEvent = new TodoEvent(TodoEventType.Completed);
 
     constructor(private todos: Array<Todo> = new Array<Todo>()) {
         this.handleEventsFromTodo = this.handleEventsFromTodo.bind(this);
@@ -32,8 +33,15 @@ export default class Store {
     }
 
     handleEventsFromTodo(todo: Todo, eventType: TodoEventType) {
-        if (eventType === TodoEventType.Deleted) {
-            this.deleteTodo(todo);
+        switch(eventType) {
+            case TodoEventType.Deleted:
+                this.deleteTodo(todo);
+                break;
+            case TodoEventType.Completed:
+                this.TodoCompleted.Fire(todo);
+                break;
+            default:
+                throw new Error("Unknown event type.");
         }
     }
 

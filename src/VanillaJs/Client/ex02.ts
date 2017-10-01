@@ -16,6 +16,8 @@ $(function() {
         todos.TodoAdded.Subscribe(completedTodosSection.OnTodoEvent);
         todos.TodoDeleted.Subscribe(openTodosSection.OnTodoEvent);
         todos.TodoDeleted.Subscribe(completedTodosSection.OnTodoEvent);
+        todos.TodoCompleted.Subscribe(openTodosSection.OnTodoEvent);
+        todos.TodoCompleted.Subscribe(completedTodosSection.OnTodoEvent);
     
         // handle the createTodoForm's submit event
         const createForm = $("#createForm");

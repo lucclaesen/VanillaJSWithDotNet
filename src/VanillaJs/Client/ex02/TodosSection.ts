@@ -15,17 +15,29 @@ export default class TodosSection {
         this.OnTodoEvent = this.OnTodoEvent.bind(this);
     }
 
+    /**
+     * Handles events from the store
+     * @param todo 
+     * @param eventType 
+     */
     public OnTodoEvent(todo: Todo, eventType: TodoEventType): void {
-        if (this.ShouldHandleEvent(todo)) {
-            switch(eventType) {
-                case TodoEventType.Added:
-                    this.renderTodo(todo);
-                    break;
-                case TodoEventType.Deleted:
-                    this.unRender(todo);
-                    break;
-            }
+        if (this.ShouldAdd(todo, eventType)) {
+            this.renderTodo(todo);
         }
+
+        if (this.ShouldDelete(todo, eventType)) {
+            this.unRender(todo);
+        }
+    }
+
+    private ShouldAdd(todo: Todo, eventType: TodoEventType) : boolean {
+        return eventType !== TodoEventType.Deleted && this.completed === todo.done;
+    }
+
+    private ShouldDelete(todo: Todo, eventType: TodoEventType) : boolean {
+        let res = eventType === TodoEventType.Deleted && this.completed === todo.done;
+        res = res || eventType === TodoEventType.Completed && !this.completed;
+        return res;
     }
 
     private renderTodo(todo : Todo) {

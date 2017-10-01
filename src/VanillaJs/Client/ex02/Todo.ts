@@ -30,10 +30,19 @@ export default class Todo {
     render() : HTMLSpanElement {
         const span = document.createElement("span") as HTMLSpanElement;
         span.innerText = this.task;
-        const button  = document.createElement("button") as HTMLButtonElement;
-        button.innerText = "Delete";
-        button.addEventListener("click", () => this.todoEventHandler(this, TodoEventType.Deleted));
-        span.appendChild(button);
+        const deleteButton  = document.createElement("button") as HTMLButtonElement;
+        deleteButton.innerText = "Delete";
+        deleteButton.addEventListener("click", () => this.todoEventHandler(this, TodoEventType.Deleted));
+        span.appendChild(deleteButton);
+        if (!this.done) {
+            const toDoneButton = document.createElement("button") as HTMLButtonElement;
+            toDoneButton.innerText = "Done";
+            toDoneButton.addEventListener("click", () => {
+                this.done = true;
+                this.todoEventHandler(this, TodoEventType.Completed);
+            });
+            span.appendChild(toDoneButton);
+        }
         return span;
     }
 }
