@@ -2,17 +2,18 @@ import Todo from "./Todo";
 import {TodoEventType, TodoEvent} from "./TodoEvent"
 
 /**
- * Represents a list of todo's
+ * Represents a list of todo's.
  */
 export default class Store {
 
     // public, since we want others to access todoAdded.Subscribe
     // ... but imperfect, since we want only the event creator to 
-    // be able t call todoAdded.Fire
+    // be able to call todoAdded.Fire
     public TodoAdded: TodoEvent = new TodoEvent(TodoEventType.Added);
+    public TodoDeleted: TodoEvent = new TodoEvent(TodoEventType.Deleted);
 
-    constructor(
-        private todos: Array<Todo> = new Array<Todo>()) {
+    constructor(private todos: Array<Todo> = new Array<Todo>()) {
+        this.handleEventsFromTodo = this.handleEventsFromTodo.bind(this);
     }
 
     get Todos() : Array<Todo> {
@@ -25,9 +26,21 @@ export default class Store {
      */
     addNewTodo(task: string) {
         const id = this.getNextAvailableId();
-        const newTodo = new Todo(id, task);
+        const newTodo = new Todo(id, this.handleEventsFromTodo, task);
         this.todos.push(newTodo);
         this.TodoAdded.Fire(newTodo);
+    }
+
+    handleEventsFromTodo(todo: Todo, eventType: TodoEventType) {
+        if (eventType === TodoEventType.Deleted) {
+            this.deleteTodo(todo);
+        }
+    }
+
+    deleteTodo(todo: Todo): void {
+        const todoIndex = this.todos.findIndex(todo => todo.Id === todo.Id);
+        this.todos.splice(todoIndex, 1);
+        this.TodoDeleted.Fire(todo);
     }
 
     private getNextAvailableId() : number {

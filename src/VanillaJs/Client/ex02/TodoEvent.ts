@@ -2,7 +2,7 @@ import Todo from "./Todo";
 
 export enum TodoEventType {
     Added,
-    StateChanged,
+    Completed,
     Deleted
 }
 
