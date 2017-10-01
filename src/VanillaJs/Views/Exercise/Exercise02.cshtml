@@ -1,12 +1,24 @@
 @{
-  ViewData["Title"] = "Exercise01";
+  ViewData["Title"] = "Exercise02";
 }
 <h2>Exercise02: Todo</h2>
 
 <p>This is a simple todo list application, using nothing but jquery.</p>
 
+<p>The design is MVVM. Which involves:</p>
+<ul>
+    <li>Model classes (Todo, Store, Event): these model state and behavior without any reference to
+    the DOM (the view), i.e. without referring to html elements and events on them. Models usually
+    form a component hierarchy in which parents create their immediate children and children notify
+    their parents of relevant changes through event handlers.</li>
+    <li>ViewModel classes (TodosSectionViewModel, TodoViewModel): these bind a given model to
+        the DOM.
+    </li>
+    <li>View: the html (both server rendered and dynamically created by ViewModels)</li>
+</ul>
+
 <div id="my-app">
-    
+
     <section>
         <h3>Create a todo</h3>
         <form id="createForm">

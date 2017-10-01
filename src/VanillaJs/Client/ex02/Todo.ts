@@ -26,15 +26,24 @@ export default class Todo {
         this.todoEventHandler = todoEventHandler;
     }
 
+    /**
+     * Gets the id of the current todo.
+     */
     get Id() {
         return this.id;
     }
 
-    delete() {
+    /**
+     * Deletes the todo.
+     */
+    Delete() {
         this.todoEventHandler(this, TodoEventType.Deleted);
     }
 
-    setComplete() {
+    /**
+     * Mark the todo as completed.
+     */
+    SetComplete() {
         this.done = true;
         this.todoEventHandler(this, TodoEventType.Completed);
     }

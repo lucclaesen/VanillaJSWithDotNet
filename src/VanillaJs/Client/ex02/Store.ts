@@ -9,9 +9,6 @@ import TodoEventType from "./TodoEventType";
  */
 export default class Store {
 
-    // public, since we want others to access todoAdded.Subscribe
-    // ... but imperfect, since we want only the event creator to 
-    // be able to call todoAdded.Fire
     public TodoAdded: Event<Todo, TodoEventType> = new Event(TodoEventType.Added);
     public TodoDeleted: Event<Todo, TodoEventType> = new Event(TodoEventType.Deleted);
     public TodoCompleted: Event<Todo, TodoEventType> = new Event(TodoEventType.Completed);

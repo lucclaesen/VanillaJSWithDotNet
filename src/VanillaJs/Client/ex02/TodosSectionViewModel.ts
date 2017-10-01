@@ -28,8 +28,10 @@ export default class TodosSectionViewModel {
             ? $(todoList)
             : todoList;
 
+        // since the ontodoEvent is passed as an event handler, make sure 'this' has lexical scope.
         this.OnTodoEvent = this.OnTodoEvent.bind(this);
 
+        // subscribe to events emitted by the store
         store.TodoAdded.Subscribe(this.OnTodoEvent);
         store.TodoDeleted.Subscribe(this.OnTodoEvent);
         store.TodoCompleted.Subscribe(this.OnTodoEvent);
@@ -37,17 +39,17 @@ export default class TodosSectionViewModel {
 
     /**
      * Handles events from the store of todos. Depending on the state of the todo's and
-     * the event types, a todo is either rendered or unrendered.
+     * the event type, a todo is either rendered or unrendered.
      * @param todo 
      * @param eventType 
      */
-    public OnTodoEvent(todo: Todo, eventType: TodoEventType): void {
+    OnTodoEvent(todo: Todo, eventType: TodoEventType): void {
         if (this.ShouldAdd(todo, eventType)) {
-            this.renderTodo(todo);
+            this.RenderTodo(todo);
         }
 
         if (this.ShouldUnRender(todo, eventType)) {
-            this.unRender(todo);
+            this.UnRender(todo);
         }
     }
 
@@ -61,16 +63,16 @@ export default class TodosSectionViewModel {
         return res;
     }
 
-    private renderTodo(todo : Todo) {
+    private RenderTodo(todo : Todo) {
         const todoViewModel = new TodoViewModel(todo);
         const li = document.createElement("li") as HTMLLIElement;
         li.setAttribute("id", todo.Id.toString());
-        const innerSpan = todoViewModel.render();
+        const innerSpan = todoViewModel.Render();
         li.appendChild(innerSpan);
         this.htmlTodoList.append(li);
     }
 
-    private unRender(todo: Todo): void {
+    private UnRender(todo: Todo): void {
         console.log(`unrendering todo ${todo.Id}`);
         var el = this.htmlTodoList.find(`#${todo.Id.toString()}`);
         el.remove();
