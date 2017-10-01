@@ -2,7 +2,9 @@ import Todo from "./Todo";
 import {TodoEventType, TodoEvent} from "./TodoEvent"
 
 /**
- * Represents a list of todo's.
+ * Represents a store (list) of todo's. On the one hand, the store allows to add and delete
+ * todo's. On the other hand, it offers an api towards view models interested in rendering
+ * a list of todo's.
  */
 export default class Store {
 
@@ -22,7 +24,8 @@ export default class Store {
     }
 
     /**
-     * Creates a new todo and adds it to the store
+     * Creates a new todo and adds it to the store. This method is called by the
+     * handler attached to the create form.
      * @param task 
      */
     addNewTodo(task: string) {
@@ -32,6 +35,13 @@ export default class Store {
         this.TodoAdded.Fire(newTodo);
     }
 
+    /**
+     * Listens to events fired by individual todo's. If a todo requests deletion, the 
+     * todo is first removed from the store and the TodoDeleted event is fired. If a todo signals
+     * a change in its inner state, this event is simply published to subscribing view models.
+     * @param todo 
+     * @param eventType 
+     */
     handleEventsFromTodo(todo: Todo, eventType: TodoEventType) {
         switch(eventType) {
             case TodoEventType.Deleted:
@@ -45,7 +55,7 @@ export default class Store {
         }
     }
 
-    deleteTodo(todo: Todo): void {
+    private deleteTodo(todo: Todo): void {
         const todoIndex = this.todos.findIndex(todo => todo.Id === todo.Id);
         this.todos.splice(todoIndex, 1);
         this.TodoDeleted.Fire(todo);
