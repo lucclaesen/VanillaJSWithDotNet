@@ -7,7 +7,7 @@ import TodoViewModel from "./TodoViewModel";
 /**
  * A view model class representing a section of todo's given their state (completed or not).
  */
-export default class TodosSection {
+export default class TodosSectionViewModel {
 
     private htmlTodoList: JQuery<HTMLElement>;
 
