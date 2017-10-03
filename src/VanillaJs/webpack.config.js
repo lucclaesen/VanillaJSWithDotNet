@@ -24,7 +24,8 @@ module.exports = env => {
     stats: { modules: false },
     entry: { 
       'ex01': './Client/ex01.ts',
-      'ex02': './Client/ex02.ts'
+      'ex02': './Client/ex02.ts',
+      'ex03': './Client/ex03.ts'
      },
     resolve: { extensions: ['.js', '.ts'] },
     output: {

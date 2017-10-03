@@ -1,0 +1,42 @@
+@{
+  ViewData["Title"] = "Exercise03";
+}
+<h2>Exercise03: Todo</h2>
+
+<p>This is a simple todo list application, using Knockout.</p>
+
+
+<div id="my-app">
+  <section>
+      <h3>Create a todo</h3>
+      <form id="createForm">
+          <span>
+              <input type="text" value="Some input"></input>
+              <button type="submit">Create</button>
+          </span>
+      </form>
+  </section>
+  <section data-bind="with: OpenTodosSectionViewModel">
+    <h2>Open todos</h2>
+    <ul data-bind="foreach: Todos(), visible: Todos().length !== 0">
+        <!-- <li data-bind="text: getTask()"></li> -->
+        <li>
+          <span>
+              <label data-bind="text: getTask()"></label>
+              <button data-bind="click: SetCompleted()">Complete</button>
+          </span>
+        </li>
+    </ul>
+  </section>
+  <section data-bind="with: CompletedTodoSectionViewModel">
+    <h2>Completed todos</h2>
+    <ul data-bind="foreach: Todos(), visible: Todos().length !== 0">
+      <li data-bind="text: getTask()"></li>
+    </ul>
+  </section>
+</div>
+
+
+@section scripts {
+  <script src="~/dist/ex03.js" asp-append-version="true"></script>
+}
