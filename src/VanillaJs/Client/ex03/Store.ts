@@ -11,10 +11,17 @@ export default class Store {
         this.Todos.subscribe(() => console.log("array changed"));
     }
 
-
     AddNewTodo(task: string) : void {
         const id = Store.IdGenerator++;
-        this.Todos.push(new Todo(id, task));
+        const newTodo = new Todo(id, task, this.DeleteTodo.bind(this));
+        this.Todos.push(newTodo);
         console.log("todo count is now " + id);        
+    }
+
+    DeleteTodo(todo: Todo): void {
+        const todoIndex = this.Todos.indexOf(todo);
+        if (todoIndex !== null) {
+            this.Todos.splice(todoIndex, 1);
+        }
     }
 }

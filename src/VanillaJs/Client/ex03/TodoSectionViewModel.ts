@@ -1,7 +1,6 @@
 import Store from "./Store";
 import Todo from "./Todo";
 import * as ko from "knockout";
-import TodoViewModel from "./TodoViewModel"
 
 export default class TodoSectionViewModel {
     

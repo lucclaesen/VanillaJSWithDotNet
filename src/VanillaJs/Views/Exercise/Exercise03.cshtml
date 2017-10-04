@@ -19,11 +19,11 @@
   <section data-bind="with: OpenTodosSectionViewModel">
     <h2>Open todos</h2>
     <ul data-bind="foreach: Todos">
-        <!-- <li data-bind="text: getTask()"></li> -->
         <li>
           <span>
               <label data-bind="text: task"></label>
               <button data-bind="click: SetComplete">Complete</button>
+              <button data-bind="click: Delete">Delete</button>
           </span>
         </li>
     </ul>
@@ -31,7 +31,12 @@
   <section data-bind="with: CompletedTodoSectionViewModel">
     <h2>Completed todos</h2>
     <ul data-bind="foreach: Todos">
-      <li data-bind="text: task"></li>
+      <li>
+        <span>
+          <label data-bind="text: task"></label>
+          <button data-bind="click: Delete">Delete</button>
+        </span>
+      </li>
     </ul>
   </section>
 </div>
