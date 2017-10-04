@@ -5,7 +5,7 @@ import TodoViewModel from "./TodoViewModel"
 
 export default class TodoSectionViewModel {
     
-    public Todos: KnockoutComputed<Array<TodoViewModel>>;
+    public Todos: KnockoutComputed<Array<Todo>>;
 
     constructor(
         store: Store, 
@@ -13,7 +13,7 @@ export default class TodoSectionViewModel {
 
         this.Todos = ko.computed(() => 
             store.Todos()
-                .map((todo) => new TodoViewModel(todo))
-                .filter((todo) => todo.Completed() === this.handlesCompletedTodos));
+            .filter((todo) => todo.Completed() === this.handlesCompletedTodos)           
+        );
     }
 }

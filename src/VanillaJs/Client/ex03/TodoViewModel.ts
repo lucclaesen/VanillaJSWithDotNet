@@ -3,10 +3,8 @@ import * as ko from "knockout";
 
 export default class TodoViewModel {
 
-    public Completed: KnockoutObservable<boolean>;
 
     constructor(private todoModel: Todo){
-        this.Completed = ko.observable(todoModel.completed);
     }
 
     get Id() {
@@ -17,9 +15,9 @@ export default class TodoViewModel {
         return this.todoModel.task;
     }
 
-    public SetCompleted(): void {
-        if (!this.Completed()) {
-            this.Completed(true);
+    public SetComplete(): void {
+        if (!this.todoModel.Completed()) {
+            this.todoModel.Completed(true);
         }
     }
 }

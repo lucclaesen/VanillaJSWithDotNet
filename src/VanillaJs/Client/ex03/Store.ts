@@ -8,7 +8,7 @@ export default class Store {
 
     constructor(todos: Array<Todo> = []) {
         this.Todos = ko.observableArray(todos);
-        this.Todos.subscribe(() => console.log("something changed"));
+        this.Todos.subscribe(() => console.log("array changed"));
     }
 
 
