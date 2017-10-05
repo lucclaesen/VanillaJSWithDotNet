@@ -13,7 +13,7 @@ export default class Store {
 
     AddNewTodo(task: string) : void {
         const id = Store.IdGenerator++;
-        const newTodo = new Todo(id, task, this.DeleteTodo.bind(this));
+        const newTodo = new Todo(id, task, (todo) => this.DeleteTodo(todo));
         this.Todos.push(newTodo);
         console.log("todo count is now " + id);        
     }
