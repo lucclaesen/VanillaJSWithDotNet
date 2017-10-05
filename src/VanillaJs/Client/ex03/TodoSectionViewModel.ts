@@ -2,9 +2,13 @@ import Store from "./Store";
 import Todo from "./Todo";
 import * as ko from "knockout";
 
+/**
+ * Represents a viewmodel supporting a list view of todo's with
+ * the same status.
+ */
 export default class TodoSectionViewModel {
     
-    public Todos: KnockoutComputed<Array<Todo>>;
+    private Todos: KnockoutComputed<Array<Todo>>;
 
     constructor(
         store: Store, 
