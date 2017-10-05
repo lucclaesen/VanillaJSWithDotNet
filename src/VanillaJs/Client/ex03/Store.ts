@@ -5,11 +5,19 @@ import * as ko from "knockout";
  * Represents a managed set of Todos. 
  */
 export default class Store {
-    
+
+    /** The observable array of todo's. Bound to the sectionVM's computation of
+     * what they need to render.
+     */
     public Todos: KnockoutObservableArray<Todo>;
 
     private static IdGenerator: number = 1;
     
+    /**
+     * Initializes a new instance of the Store.
+     * @param todos The initial set of todo' to initialize this store with (defaults to an empty
+     * set of no initial value is explicitly given).
+     */
     constructor(todos: Array<Todo> = []) {
         this.Todos = ko.observableArray(todos);
         this.Todos.subscribe(() => console.log("array changed"));
